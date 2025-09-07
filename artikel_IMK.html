@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sejarah & Perkembangan IMK (HCI) — Artikel</title>
+  <meta name="description" content="Artikel ringkas dan interaktif tentang sejarah dan perkembangan Interaksi Manusia dan Komputer (IMK/HCI), hubungannya dengan UX, prinsip, contoh, dan tren." />
+  <style>
+    :root{
+      --bg:#0b0c0f; --card:#11131a; --muted:#7b8197; --text:#e7eaf3; --accent:#5ee1a2; --ring:#2b2f3b; --link:#8ab4ff;
+      --code:#1a1f2e; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    .light{ --bg:#f7f8fb; --card:#ffffff; --muted:#5b6275; --text:#101322; --accent:#0fb87c; --ring:#e8eaf2; --link:#0b57d0; --code:#f1f3f9; --shadow:0 10px 24px rgba(2,6,23,.08); }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{
+      position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent),var(--bg);
+      backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--ring)
+    }
+    .container{max-width:1100px;margin-inline:auto;padding:20px}
+    .title{display:flex;gap:14px;align-items:center;justify-content:space-between}
+    h1{margin:10px 0 0;font-size:clamp(24px,4vw,34px)}
+    .controls{display:flex;gap:10px;align-items:center}
+    .btn{border:1px solid var(--ring);background:var(--card);color:var(--text);padding:8px 12px;border-radius:12px;cursor:pointer;box-shadow:var(--shadow)}
+    .btn:active{transform:translateY(1px)}
+    .search{display:flex;align-items:center;gap:8px;border:1px solid var(--ring);padding:8px 12px;border-radius:12px;background:var(--card);box-shadow:var(--shadow)}
+    .search input{all:unset;width:200px}
+
+    main{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:start}
+    nav#toc{position:sticky;top:78px;max-height:calc(100dvh - 100px);overflow:auto;padding:12px;border:1px solid var(--ring);border-radius:14px;background:var(--card);box-shadow:var(--shadow)}
+    #toc h3{margin:.2rem 0 .6rem;font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+    #toc a{display:block;padding:.28rem .4rem;border-radius:8px;color:var(--text)}
+    #toc a.active{background:rgba(94,225,162,.15);border-left:3px solid var(--accent)}
+    #toc .lvl-3{margin-left:10px;font-size:.95em;color:var(--muted)}
+
+    article{background:var(--card);padding:22px;border:1px solid var(--ring);border-radius:16px;box-shadow:var(--shadow)}
+    article h2{scroll-margin-top:90px;border-bottom:1px dashed var(--ring);padding-bottom:6px}
+    article h3{scroll-margin-top:90px;color:var(--muted)}
+    .lead{font-size:1.05rem;color:var(--muted)}
+    .callout{border:1px solid var(--ring);background:linear-gradient(180deg,rgba(94,225,162,.08),transparent);padding:14px;border-radius:12px}
+    .grid{display:grid;gap:12px}
+    .grid.columns-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .badge{display:inline-block;font:600 12px/1 system-ui;padding:4px 8px;border-radius:999px;background:rgba(94,225,162,.15);border:1px solid rgba(94,225,162,.4);color:var(--text)}
+    code{background:var(--code);padding:2px 6px;border-radius:6px;border:1px solid var(--ring)}
+    .footer{color:var(--muted);font-size:.95rem;margin-top:24px}
+
+    .progress{position:fixed;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--accent),transparent);transform-origin:left top;transform:scaleX(0);z-index:60}
+    .top{position:fixed;right:18px;bottom:18px;padding:10px 14px;border-radius:999px;box-shadow:var(--shadow)}
+
+    @media (max-width: 960px){ main{grid-template-columns:1fr} nav#toc{position:relative;top:0;max-height:none} .search input{width:140px} }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <header>
+    <div class="container title">
+      <div>
+        <h1>Sejarah & Perkembangan IMK (HCI)</h1>
+        <p class="lead">Sebuah artikel interaktif tentang evolusi Interaksi Manusia & Komputer dan kaitannya dengan UX.</p>
+      </div>
+      <div class="controls">
+        <label class="search" title="Cari di artikel (tekan / untuk fokus)">
+          🔎 <input id="search" placeholder="Cari topik…" />
+        </label>
+        <button class="btn" id="toggleTheme" title="Mode terang/gelap">🌗 Tema</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container" style="margin-top:16px">
+    <main>
+      <nav id="toc" aria-label="Daftar Isi">
+        <h3>Daftar Isi</h3>
+        <div id="toc-items"></div>
+      </nav>
+
+      <article id="content">
+        <section>
+          <h2 id="pendahuluan">Pendahuluan</h2>
+          <p>Interaksi Manusia dan Komputer (<strong>IMK</strong> atau <em>Human–Computer Interaction, HCI</em>) adalah disiplin yang mempelajari bagaimana merancang sistem interaktif agar <em>mudah dipelajari</em>, <em>efisien</em>, <em>minim kesalahan</em>, dan <em>menyenangkan</em> digunakan. IMK menjadi fondasi praktik <strong>User Experience (UX)</strong> dalam pengembangan produk digital.</p>
+          <div class="callout">
+            <span class="badge">Inti</span>
+            <p>IMK menempatkan <strong>manusia</strong>—bukan teknologi—sebagai pusat perancangan. Teknologi dianggap <em>berhasil</em> jika sesuai konteks, kebutuhan, dan kemampuan penggunanya.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 id="definisi">Definisi & Ruang Lingkup</h2>
+          <div class="grid columns-2">
+            <div>
+              <h3>Fokus IMK</h3>
+              <ul>
+                <li>Memahami karakteristik pengguna (kognitif, perseptual, fisik, emosi).</li>
+                <li>Merancang <em>interface</em> (GUI, suara, gesture, chatbot) yang efektif.</li>
+                <li>Evaluasi formal: <em>usability testing</em>, heuristik, analitik.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Tujuan IMK</h3>
+              <ul>
+                <li><strong>Learnability</strong> – mudah dipelajari.</li>
+                <li><strong>Efisiensi</strong> – cepat mencapai tujuan.</li>
+                <li><strong>Keandalan</strong> – mengurangi kesalahan & risiko.</li>
+                <li><strong>Pengalaman positif</strong> – nyaman & memuaskan.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 id="sejarah">Sejarah Singkat IMK</h2>
+          <h3>1950–1960: Era Awal</h3>
+          <p>Komputer berukuran besar, mahal, dan dioperasikan pakar melalui <em>command line</em>. Fokus pada rekayasa perangkat keras & perangkat lunak dasar.</p>
+          <h3>1980-an: GUI Memasyarakat</h3>
+          <p>Muncul <em>Graphical User Interface</em> (ikon, menu, jendela, mouse) yang menurunkan hambatan adopsi. Konsep <em>direct manipulation</em> memperkaya interaksi.</p>
+          <h3>2000-an: Mobile & Sentuhan</h3>
+          <p>Smartphone dan tablet memperkenalkan interaksi gesture dan desain responsif. <em>App ecosystem</em> memicu standar baru pada kemudahan penggunaan.</p>
+          <h3>2010–sekarang: AI, Suara, AR/VR</h3>
+          <p>Asisten suara, rekomendasi berbasis AI, serta realitas campuran memperluas medium interaksi. Tantangan etika, privasi, dan aksesibilitas menjadi semakin penting.</p>
+        </section>
+
+        <section>
+          <h2 id="multidisipliner">Bidang Multidisipliner</h2>
+          <p>IMK memadukan <strong>Ilmu Komputer</strong> (perangkat lunak), <strong>Teknik/Elektronika</strong> (perangkat keras), dan <strong>Psikologi</strong> (perilaku & kognisi). Evaluasi eksperimental membantu mengukur kinerja, beban kognitif, dan kepuasan.</p>
+        </section>
+
+        <section>
+          <h2 id="keterkaitan-ux">IMK & UX</h2>
+          <div class="grid columns-2">
+            <div>
+              <h3>IMK (Teori & Metode)</h3>
+              <ul>
+                <li>Psikologi persepsi & kognitif</li>
+                <li>Ergonomi & interaksi</li>
+                <li>Evaluasi & pengukuran</li>
+              </ul>
+            </div>
+            <div>
+              <h3>UX (Implementasi)</h3>
+              <ul>
+                <li>Riset pengguna & <em>user journey</em></li>
+                <li>Desain antarmuka & prototyping</li>
+                <li>Pengujian kegunaan & iterasi</li>
+              </ul>
+            </div>
+          </div>
+          <p>Keduanya saling melengkapi: IMK menyediakan dasar ilmiah untuk praktik UX yang berorientasi pengalaman nyata pengguna.</p>
+        </section>
+
+        <section>
+          <h2 id="metodologi">Metodologi Kunci</h2>
+          <h3>Design Thinking</h3>
+          <ol>
+            <li><strong>Empathize</strong> – pahami konteks & kebutuhan pengguna.</li>
+            <li><strong>Define</strong> – rumuskan masalah yang tepat.</li>
+            <li><strong>Ideate</strong> – eksplorasi solusi kreatif.</li>
+            <li><strong>Prototype</strong> – buat model interaktif.</li>
+            <li><strong>Test</strong> – uji dengan pengguna, iterasi berkelanjutan.</li>
+          </ol>
+          <h3>Teknik Evaluasi</h3>
+          <ul>
+            <li><em>Usability testing</em> berbasis tugas</li>
+            <li>Heuristic evaluation (mis. Nielsen)</li>
+            <li>Analitik (click/scroll heatmap, waktu tugas, error rate)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 id="penerapan">Contoh Penerapan</h2>
+          <ul>
+            <li><strong>Mesin ATM:</strong> alur jelas untuk semua kalangan.</li>
+            <li><strong>Pencarian web:</strong> satu kolom, hasil relevan cepat.</li>
+            <li><strong>Aplikasi mobile:</strong> navigasi intuitif, responsif.</li>
+            <li><strong>Asisten suara/AI:</strong> percakapan alami berbasis bahasa.</li>
+            <li><strong>AR/VR:</strong> pelatihan, edukasi, simulasi realistis.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 id="tantangan">Tantangan & Tren</h2>
+          <ul>
+            <li><strong>Aksesibilitas:</strong> inklusi pengguna difabel sebagai standar, bukan tambahan.</li>
+            <li><strong>Privasi & Etika:</strong> transparansi data, bias AI, persetujuan yang bermakna.</li>
+            <li><strong>Multi-device:</strong> konsistensi pengalaman lintas perangkat.</li>
+            <li><strong>Context-aware UI:</strong> antarmuka adaptif berdasarkan situasi pengguna.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 id="referensi">Referensi Singkat</h2>
+          <ul>
+            <li>Dix, A., Finlay, J., Abowd, G., Beale, R. (2004). <em>Human-Computer Interaction</em>.</li>
+            <li>Sharp, H., Preece, J., Rogers, Y. (2019). <em>Interaction Design: Beyond Human-Computer Interaction (5e)</em>.</li>
+            <li>Artikel proses UX di Adobe XD Ideas.</li>
+            <li>Artikel panduan UX di Halo Designers.</li>
+          </ul>
+          <p class="footer">Artikel ini disusun berdasarkan materi kuliah IMK & UX dan praktik umum di industri.</p>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <button class="btn top" id="toTop" aria-label="Kembali ke atas">⬆️</button>
+
+  <script>
+    // Theme toggle
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved === 'light') document.body.classList.add('light');
+    document.getElementById('toggleTheme').addEventListener('click',()=>{
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light':'dark');
+    });
+
+    // Build TOC
+    const toc = document.getElementById('toc-items');
+    const headings = [...document.querySelectorAll('article h2, article h3')];
+    const makeId = (el)=> el.id || el.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-');
+    headings.forEach(h=>{ if(!h.id) h.id = makeId(h); });
+    headings.forEach(h=>{
+      const a = document.createElement('a');
+      a.href = '#'+h.id; a.textContent = h.textContent; a.className = h.tagName==='H3'?'lvl-3':'';
+      toc.appendChild(a);
+    });
+
+    // Scrollspy + progress
+    const links = [...toc.querySelectorAll('a')];
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(l=>l.classList.remove('active'));
+          const active = toc.querySelector(`a[href="#${e.target.id}"]`);
+          active && active.classList.add('active');
+        }
+      });
+    },{ rootMargin:'-60% 0px -35% 0px', threshold:0 });
+    document.querySelectorAll('article h2, article h3').forEach(h=>observer.observe(h));
+
+    const progress = document.getElementById('progress');
+    document.addEventListener('scroll',()=>{
+      const s = document.documentElement.scrollTop || document.body.scrollTop;
+      const h = (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+      const p = h? (s/h) : 0; progress.style.transform = `scaleX(${p})`;
+    });
+
+    // Back to top
+    const toTop = document.getElementById('toTop');
+    toTop.addEventListener('click',()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Search & highlight
+    const search = document.getElementById('search');
+    const content = document.getElementById('content');
+    let lastTerm = '';
+
+    const clearHighlights = ()=>{
+      content.querySelectorAll('mark[data-hl]').forEach(m=>{
+        const t = document.createTextNode(m.textContent);
+        m.replaceWith(t);
+      });
+    };
+
+    const highlight = (term)=>{
+      if(!term) return;
+      const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, null);
+      const nodes = [];
+      while(walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(n=>{
+        const i = n.nodeValue.toLowerCase().indexOf(term.toLowerCase());
+        if(i>-1 && n.nodeValue.trim()){
+          const span = document.createElement('span');
+          const before = n.nodeValue.slice(0,i);
+          const match = n.nodeValue.slice(i,i+term.length);
+          const after = n.nodeValue.slice(i+term.length);
+          span.append(before, Object.assign(document.createElement('mark'),{textContent:match,dataset:{hl:1}}), after);
+          n.parentNode.replaceChild(span, n);
+        }
+      });
+    };
+
+    search.addEventListener('input', e=>{
+      const term = e.target.value.trim();
+      if(term === lastTerm) return;
+      clearHighlights();
+      if(term.length>=2) highlight(term);
+      lastTerm = term;
+    });
+
+    // Quick focus on search
+    window.addEventListener('keydown', e=>{
+      if(e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+    });
+  </script>
+</body>
+</html>
